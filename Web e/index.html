@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lomba Euy</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <nav>
+
+    <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <h1 id="nav-title">My Kandang</h1>
+
+    <ul id="nav-menu">
+        <li><a href="#" onclick="showSection('dashboard')">Dashboard</a></li>
+        <li><a href="#" onclick="showSection('unggas')">Unggas & Umur</a></li>
+        <li><a href="#" onclick="showSection('pakan')">Pakan</a></li>
+        <li><a href="#" onclick="showSection('kesehatan')">Kesehatan</a></li>
+        <li><a href="#" onclick="showSection('produksi')">Produksi</a></li>
+        <li><a href="#" onclick="showSection('keuangan')">Keuangan</a></li>
+        <li><a href="#" onclick="showSection('tools')">Tools</a></li>
+        <li><a href="#" onclick="showSection('edukasi')">Info</a></li>
+    </ul>
+
+</nav>
+
+
+
+    <section id="dashboard" class="section active">
+        <h2>Dashboard </h2>
+        <div id="dashboard-summary"></div>
+        <div id="notifications"></div>
+    </section>
+
+    <section id="unggas" class="section">
+        <h2>Jumlah Unggas & Umur</h2>
+        <form id="unggas-form">
+            <input type="number" id="jumlah-ayam" placeholder="Jumlah Ayam" required>
+            <input type="number" id="umur-ayam" placeholder="Umur (minggu)" required>
+            <button type="submit">Simpan</button>
+        </form>
+        <table id="unggas-table"></table>
+        <canvas id="chart-unggas"></canvas>
+    </section>
+
+    <section id="pakan" class="section">
+        <h2>Manajemen Pakan</h2>
+        <form id="pakan-calc">
+            <input type="number" id="umur-pakan" placeholder="Umur Ayam (minggu)" required>
+            <select id="jenis-pakan">
+                <option value="petelur">Petelur</option>
+                <option value="pedaging">Pedaging</option>
+            </select>
+            <button type="submit">Hitung Kebutuhan</button>
+        </form>
+        <div id="pakan-result"></div>
+        <form id="stok-form">
+            <input type="number" id="stok-masuk" placeholder="Stok Masuk" required>
+            <input type="number" id="stok-keluar" placeholder="Stok Keluar" required>
+            <button type="submit">Simpan Stok</button>
+        </form>
+        <canvas id="chart-pakan"></canvas>
+    </section>
+
+    <section id="kesehatan" class="section">
+        <h2>Kesehatan & Vaksinasi</h2>
+        <div id="jadwal-vaksin"></div>
+        <form id="diagnosa-form">
+            <input type="text" id="gejala" placeholder="Gejala (mis: demam)" required>
+            <button type="submit">Diagnosa</button>
+        </form>
+        <div id="diagnosa-result"></div>
+    </section>
+
+    <section id="produksi" class="section">
+        <h2>Produksi & Pertumbuhan</h2>
+        <form id="produksi-form">
+            <input type="number" id="berat-badan" placeholder="Berat Badan (kg)">
+            <input type="number" id="jumlah-telur" placeholder="Jumlah Telur">
+            <button type="submit">Simpan</button>
+        </form>
+        <canvas id="chart-produksi"></canvas>
+        <div id="prediksi-fcr"></div>
+    </section>
+
+    <section id="keuangan" class="section">
+        <h2>Keuangan</h2>
+        <form id="biaya-form">
+            <select id="kategori-biaya">
+                <option value="pakan">Pakan</option>
+                <option value="vaksin">Vaksin</option>
+            </select>
+            <input type="number" id="jumlah-biaya" placeholder="Jumlah" required>
+            <button type="submit">Tambah Biaya</button>
+        </form>
+        <form id="pendapatan-form">
+            <select id="jenis-pendapatan">
+                <option value="telur">Telur</option>
+                <option value="ayam">Ayam Hidup</option>
+            </select>
+            <input type="number" id="jumlah-pendapatan" placeholder="Jumlah" required>
+            <button type="submit">Tambah Pendapatan</button>
+        </form>
+        <div id="laporan-keuangan"></div>
+        <button onclick="simulasiSkenario()">Simulasi Harga Telur Naik 10%</button>
+        <div id="simulasi-result"></div>
+    </section>
+
+    <section id="edukasi" class="section">
+        <h2>Info</h2>
+        <div id="artikel-list"></div>
+    </section>
+
+    <section id="tools" class="section">
+        <h2>Tools / Kalkulator</h2>
+        <form id="kalkulator-kandang">
+            <input type="number" id="luas-kandang" placeholder="Luas Kandang (m²)" required>
+            <input type="number" id="densitas" placeholder="Densitas Ayam/m²" required>
+            <button type="submit">Hitung Kebutuhan</button>
+        </form>
+        <div id="kandang-result"></div>
+        <form id="kalkulator-fcr">
+            <input type="number" id="berat-akhir" placeholder="Berat Akhir (kg)" required>
+            <input type="number" id="pakan-total" placeholder="Pakan Total (kg)" required>
+            <button type="submit">Hitung FCR</button>
+        </form>
+        <div id="fcr-result"></div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
